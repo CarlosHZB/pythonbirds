@@ -28,15 +28,39 @@ class Direcao:
     def girar_esquerda(self):
         self.valor = self.rotacao_a_esquerda_dct[self.valor]
 
+class Carro:
+    def __init__(self, direcao, motor):
+        self.motor = motor
+        self.direcao = direcao
+
+    def calcular_velocidade(self):
+        return self.motor.velocidade
+
+    def acelerar(self):
+        self.motor.acelerar()
+
+    def frear(self):
+        self.motor.frear()
+
+    def calcular_direcao(self):
+        return self.direcao.valor
+
+    def girar_a_direita(self):
+        self.direcao.girar_direita()
+
+    def girar_a_esquerda(self):
+        self.direcao.girar_esquerda()
+
+
 
 if __name__ == '__main__':
     direcao = Direcao()
-    print(direcao.valor)
-    direcao.girar_direita()
-    print(direcao.valor)
-    direcao.girar_direita()
-    print(direcao.valor)
-    direcao.girar_esquerda()
-    print(direcao.valor)
-    direcao.girar_esquerda()
-    print(direcao.valor)
+    motor = Motor()
+    carro = Carro(direcao, motor)
+    print(carro.calcular_velocidade())
+    carro.acelerar()
+    print(carro.calcular_velocidade())
+    carro.acelerar()
+    print(carro.calcular_velocidade())
+    carro.frear()
+    print(carro.calcular_velocidade())
